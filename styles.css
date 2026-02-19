@@ -698,6 +698,22 @@ p {
   }
 }
 
+.blink-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.footer-colophon {
+  font-size: 20px;
+  color: #000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 /* Lightbox */
 .lightbox {
   display: none;

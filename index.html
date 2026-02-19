@@ -30,7 +30,7 @@
         <img src="images/Logo.jpg" alt="Lance Shields Design" class="logo-image">
       </div>
       <div class="intro-content">
-        <h1 class="intro-heading">I design products people love at scale</h1>
+        <h1 class="intro-heading"><span id="typewriter"></span><span class="blink-cursor">|</span></h1>
       </div>
     </section>
 
@@ -213,6 +213,7 @@
     <div class="footer-logo-text">
       <span>Lance Shields Design</span>
     </div>
+    <p class="footer-colophon">Designed by hand. Built by AI.<span class="blink-cursor">|</span></p>
   </footer>
 
   <!-- Lightbox -->
@@ -242,6 +243,21 @@
   </div>
 
   <script>
+    // Typewriter effect
+    (function() {
+      const text = "I design products people love at scale";
+      const el = document.getElementById('typewriter');
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          el.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 45);
+        }
+      }
+      setTimeout(type, 500);
+    })();
+
     // Project data
     const projects = [
       {
