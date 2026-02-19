@@ -141,9 +141,11 @@
 
     <!-- Stats Section -->
     <section id="about" class="stats-section">
+      <h2 class="section-label">About me</h2>
       <div class="stats-content">
         <div class="stats-intro">
           <p class="stats-intro-text">Fractional design leadership for AI-driven products, platforms, and global teams.</p>
+          <p class="stats-intro-bio">I'm a design leader and principal designer with 20+ years of experience shaping UX, brand, and platform systems at scale—especially where AI is reshaping how people discover, decide, and act. I focus on hands-on ownership of hard problems, partnering closely with product and engineering to turn emerging capabilities into usable, trustworthy experiences.</p>
         </div>
         <div class="stats-contain">
           <div class="stats-list">
@@ -162,7 +164,7 @@
               <p class="stat-description">Increase in add-on discovery and use in Express</p>
             </div>
           </div>
-          <a href="#" class="text-link text-link-large">About <span class="arrow">&rarr;</span></a>
+
         </div>
       </div>
     </section>
@@ -215,6 +217,8 @@
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
+    <button class="lightbox-prev" id="lightbox-prev"><img src="images/arrow-left.svg" alt="Previous"></button>
+    <button class="lightbox-next" id="lightbox-next"><img src="images/arrow-right.svg" alt="Next"></button>
     <button class="lightbox-close" id="lightbox-close">&times;</button>
     <img class="lightbox-img" id="lightbox-img" alt="">
   </div>
@@ -407,6 +411,26 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    let lightboxImages = [];
+    let lightboxIndex = 0;
+
+    function showLightboxImage(index) {
+      lightboxIndex = index;
+      lightboxImg.src = lightboxImages[lightboxIndex].src;
+      lightboxImg.alt = lightboxImages[lightboxIndex].alt;
+    }
+
+    function lightboxNav(dir) {
+      let next = lightboxIndex + dir;
+      if (next < 0) next = lightboxImages.length - 1;
+      if (next >= lightboxImages.length) next = 0;
+      showLightboxImage(next);
+    }
+
+    lightboxPrev.addEventListener('click', () => lightboxNav(-1));
+    lightboxNext.addEventListener('click', () => lightboxNav(1));
 
     lightboxClose.addEventListener('click', () => {
       lightbox.classList.remove('active');
@@ -426,7 +450,10 @@
           closeModal();
         }
       }
-      if (document.getElementById('project-modal-overlay').classList.contains('active')) {
+      if (lightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') lightboxNav(-1);
+        if (e.key === 'ArrowRight') lightboxNav(1);
+      } else if (document.getElementById('project-modal-overlay').classList.contains('active')) {
         if (e.key === 'ArrowLeft') navigateModal(-1);
         if (e.key === 'ArrowRight') navigateModal(1);
       }
@@ -465,15 +492,16 @@
       });
 
       // Open lightbox only on clean click (no drag)
-      grid.querySelectorAll('img').forEach(img => {
+      const gridImages = Array.from(grid.querySelectorAll('img'));
+      gridImages.forEach((img, imgIndex) => {
         img.style.cursor = 'pointer';
         img.addEventListener('click', () => {
           if (hasDragged) {
             hasDragged = false;
             return;
           }
-          lightboxImg.src = img.src;
-          lightboxImg.alt = img.alt;
+          lightboxImages = gridImages;
+          showLightboxImage(imgIndex);
           lightbox.classList.add('active');
         });
       });

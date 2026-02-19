@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 45px;
+}
+
 body {
   font-family: 'Instrument Sans', sans-serif;
   font-weight: 400;
@@ -244,8 +249,10 @@ p {
 
 /* Stats Section */
 .stats-section {
-  padding: 0 15px 50px;
+  padding: 20px 15px 50px;
   max-width: 1920px;
+  border-top: 1px solid #000;
+  margin: 0 15px;
 }
 
 .stats-content {
@@ -264,6 +271,15 @@ p {
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.6px;
+  max-width: 325px;
+  margin-bottom: 24px;
+}
+
+.stats-intro-bio {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000;
   max-width: 325px;
 }
 
@@ -698,6 +714,39 @@ p {
   max-height: 90vh;
   object-fit: contain;
   border-radius: 4px;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  opacity: 1;
+}
+
+.lightbox-prev img,
+.lightbox-next img {
+  width: 16px;
+  height: 32px;
+}
+
+.lightbox-prev {
+  left: calc(10vw - 56px);
+}
+
+.lightbox-next {
+  right: calc(10vw - 56px);
 }
 
 .lightbox-close {
