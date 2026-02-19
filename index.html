@@ -14,7 +14,7 @@
   <!-- Nav Header (sticky) -->
   <nav class="nav-header">
     <div class="nav-logotype">
-      <span class="nav-logo-text">Lance Shields Design</span>
+      <a href="#" class="nav-logo-text" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Lance Shields Design</a>
     </div>
     <div class="nav-links">
       <a href="#work" class="nav-link">Work</a>
@@ -36,11 +36,11 @@
 
     <!-- Work Section -->
     <section id="work" class="work-section">
-      <h2 class="section-label">My work</h2>
+      <h2 class="section-label fade-in">My work</h2>
 
       <!-- Project 1: Adobe AI Image Editor -->
       <article class="project">
-        <div class="project-images">
+        <div class="project-images fade-in">
           <div class="image-grid image-grid-4">
             <img src="images/Harmony-thumbnail-01.webp" alt="Adobe AI Image Editor screenshot 1">
             <img src="images/Harmony-thumbnail-02.webp" alt="Adobe AI Image Editor screenshot 2">
@@ -48,7 +48,7 @@
             <img src="images/Harmony-thumbnail-09.webp" alt="Adobe AI Image Editor screenshot 4">
           </div>
         </div>
-        <div class="project-info">
+        <div class="project-info fade-in">
           <div class="project-title">
             <span class="project-label">Project</span>
             <div class="project-names">
@@ -65,7 +65,7 @@
 
       <!-- Project 2: Adobe Express Enterprise -->
       <article class="project">
-        <div class="project-images">
+        <div class="project-images fade-in">
           <div class="image-grid image-grid-4">
             <img src="images/extensibility-thumbnail-1.webp" alt="Adobe Express Enterprise screenshot 1">
             <img src="images/extensibility-thumbnail-2.webp" alt="Adobe Express Enterprise screenshot 2">
@@ -73,7 +73,7 @@
             <img src="images/extensibility-thumbnail-8.webp" alt="Adobe Express Enterprise screenshot 4">
           </div>
         </div>
-        <div class="project-info">
+        <div class="project-info fade-in">
           <div class="project-title">
             <span class="project-label">Project</span>
             <div class="project-names">
@@ -90,7 +90,7 @@
 
       <!-- Project 3: Modular Suite for XD -->
       <article class="project">
-        <div class="project-images">
+        <div class="project-images fade-in">
           <div class="image-grid image-grid-4">
             <img src="images/Modular-2.webp" alt="Modular Suite screenshot 1">
             <img src="images/Modular-5.webp" alt="Modular Suite screenshot 2">
@@ -98,7 +98,7 @@
             <img src="images/Modular-15.webp" alt="Modular Suite screenshot 4">
           </div>
         </div>
-        <div class="project-info">
+        <div class="project-info fade-in">
           <div class="project-title">
             <span class="project-label">Project</span>
             <div class="project-names">
@@ -115,7 +115,7 @@
 
       <!-- Project 4: ADP My Aline -->
       <article class="project">
-        <div class="project-images">
+        <div class="project-images fade-in">
           <div class="image-grid image-grid-4">
             <img src="images/ADP-thumbnail-1.webp" alt="ADP My Aline screenshot 1">
             <img src="images/ADP-thumbnail-8.webp" alt="ADP My Aline screenshot 2">
@@ -123,7 +123,7 @@
             <img src="images/ADP-thumbnail-10.webp" alt="ADP My Aline screenshot 4">
           </div>
         </div>
-        <div class="project-info">
+        <div class="project-info fade-in">
           <div class="project-title">
             <span class="project-label">Project</span>
             <div class="project-names">
@@ -141,13 +141,13 @@
 
     <!-- Stats Section -->
     <section id="about" class="stats-section">
-      <h2 class="section-label">About me</h2>
+      <h2 class="section-label fade-in">About me</h2>
       <div class="stats-content">
-        <div class="stats-intro">
+        <div class="stats-intro fade-in">
           <p class="stats-intro-text">Fractional design leadership for AI-driven products, platforms, and global teams.</p>
           <p class="stats-intro-bio">I'm a design leader and principal designer with 20+ years of experience shaping UX, brand, and platform systems at scale—especially where AI is reshaping how people discover, decide, and act. I focus on hands-on ownership of hard problems, partnering closely with product and engineering to turn emerging capabilities into usable, trustworthy experiences.</p>
         </div>
-        <div class="stats-contain">
+        <div class="stats-contain fade-in">
           <div class="stats-list">
             <div class="stat">
               <p class="stat-number">540M+</p>
@@ -172,14 +172,14 @@
     <!-- Connect Section -->
     <section id="contact" class="connect-section">
       <hr class="divider">
-      <p class="connect-heading">Connect with me to explore your project's potential.</p>
+      <p class="connect-heading fade-in">Connect with me to explore your project's potential.</p>
       <hr class="divider">
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
+    <div class="footer-content fade-in">
       <div class="footer-logo">
         <img src="images/geometric.svg" alt="Geometric logo" class="geometric-logo">
       </div>
@@ -243,6 +243,17 @@
   </div>
 
   <script>
+    // Scroll fade-in
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
     // Typewriter effect
     (function() {
       const text = "I design products people love at scale";
