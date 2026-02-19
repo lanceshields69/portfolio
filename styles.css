@@ -249,10 +249,14 @@ p {
 
 /* Stats Section */
 .stats-section {
-  padding: 20px 15px 50px;
+  padding: 0 15px 50px;
   max-width: 1920px;
+}
+
+.stats-section .section-label {
+  padding-top: 20px;
+  padding-bottom: 60px;
   border-top: 1px solid #000;
-  margin: 0 15px;
 }
 
 .stats-content {
