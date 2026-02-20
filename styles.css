@@ -7,7 +7,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 45px;
+  scroll-padding-top: 65px;
 }
 
 body {
@@ -40,7 +40,7 @@ p {
   z-index: 100;
   display: flex;
   align-items: center;
-  height: 46px;
+  height: 66px;
   padding: 0 15px;
   background: #fff;
 }
